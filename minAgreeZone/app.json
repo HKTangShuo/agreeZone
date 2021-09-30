@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/agreePoint/agreePoint",
+    "pages/agreeBook/agreeBook",
+    "pages/agreeTopic/agreeTopic",
+    "pages/home/home",
+    "pages/agreePointDetail/agreePointDetail",
+
+
+    "pages/auctionDetail/auctionDetail",
+    "pages/deposit/deposit",
+    "pages/auctionItemDetail/auctionItemDetail",
+    "pages/login/login",
+    "pages/publish/publish",
+    "pages/publishSuccess/publishSuccess",
+    "pages/bid/bid",
+    "pages/coupon/coupon",
+    "pages/myCoupon/myCoupon",
+    "pages/order/order",
+    "pages/pay/pay",
+    "pages/chooseCoupon/chooseCoupon",
+    "pages/chooseAddress/chooseAddress",
+    "pages/paySuccess/paySuccess"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "赞圈儿",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "custom": true,
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "color": "#666",
+    "selectedColor": "#b4282d",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/images/tabbar/tab_home_normal.png",
+        "selectedIconPath": "/static/images/tabbar/tab_home.png"
+      },
+      {
+        "pagePath": "pages/agreePoint/agreePoint",
+        "text": "赞点",
+        "iconPath": "/static/images/tabbar/tab_agreePoint_normal.png",
+        "selectedIconPath": "/static/images/tabbar/tab_agreePoint.png"
+      },
+      {
+        "pagePath": "pages/agreeBook/agreeBook",
+        "text": "赞书",
+        "iconPath": "/static/images/tabbar/tab_agreeBook_normal.png",
+        "selectedIconPath": "/static/images/tabbar/tab_agreeBook.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "/static/images/tabbar/tab_profile_normal.png",
+        "selectedIconPath": "/static/images/tabbar/tab_profile.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}
