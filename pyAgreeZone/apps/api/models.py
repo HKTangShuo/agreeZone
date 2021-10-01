@@ -156,3 +156,11 @@ class AgreeMessageTask(models.Model):
     agreeMessage = models.OneToOneField(verbose_name='通知', to='AgreeMessage')
     task = models.CharField(verbose_name='Celery通知任务ID', max_length=64)
     end_task = models.CharField(verbose_name='Celery通知结束任务ID', max_length=64)
+
+
+class AgreeBook(models.Model):
+    title = models.CharField(verbose_name='书名', max_length=32)
+    cover = models.CharField(verbose_name='封面', max_length=128)
+    read_count = models.PositiveIntegerField(verbose_name='浏览数', default=0)
+    author = models.CharField(verbose_name='作者名', max_length=32)
+    url = models.CharField(verbose_name='下载链接', max_length=128)
