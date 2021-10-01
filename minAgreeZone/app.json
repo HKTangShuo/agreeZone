@@ -6,9 +6,10 @@
     "pages/agreeTopic/agreeTopic",
     "pages/home/home",
     "pages/agreePointDetail/agreePointDetail",
+    "pages/agreeMessageDetail/agreeMessageDetail",
 
 
-    "pages/auctionDetail/auctionDetail",
+    
     "pages/deposit/deposit",
     "pages/auctionItemDetail/auctionItemDetail",
     "pages/login/login",

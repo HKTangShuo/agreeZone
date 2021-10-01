@@ -23,6 +23,7 @@ Page({
       return
     }
     var replyInfo = e.currentTarget.dataset;
+    console.log(replyInfo)
     this.setData({
       isShowCommentModal: true,
       reply: replyInfo,
@@ -84,6 +85,7 @@ Page({
     })
     // 发布评论，将评论数据发送到后台接口
     var userInfo = app.globalData.userInfo;
+    console.log(this.data.reply)
     wx.request({
       url: api.Comment,
       data: this.data.reply,

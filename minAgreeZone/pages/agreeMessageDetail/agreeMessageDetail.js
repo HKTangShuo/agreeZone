@@ -9,13 +9,13 @@ Page({
    */
   data: {
     auctionDetail: {},
-    auctionId: null
+    messageId: null
   },
 
   getDetailInfo:function(){
     var userInfo = app.globalData.userInfo;
     wx.request({
-      url: api.Auction + this.data.auctionId + '/',
+      url: api.Auction + this.data.messageId + '/',
       header: {
         Authorization: userInfo ? "token " + userInfo.token : ""
       },
@@ -34,7 +34,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      auctionId: options.auctionId
+      messageId: options.messageId
     });
     
     this.getDetailInfo();

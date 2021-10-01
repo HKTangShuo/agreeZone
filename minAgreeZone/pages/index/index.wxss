@@ -1,6 +1,6 @@
 
 
-.auction-item{
+.message-item{
   margin-top: 40rpx;
   width: 710rpx;
   padding-right: 20rpx;

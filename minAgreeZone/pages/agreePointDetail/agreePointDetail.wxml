@@ -51,7 +51,7 @@
               <text>{{item.create_date}}</text>
             </view>
             <view class="func">
-              <text data-agreePoint="{{agreePoint.id}}" data-root="{{item.id}}" data-reply="{{item.id}}" data-depth="{{item.depth + 1}}" data-nickname="{{item.nickname}}" bindtap="onClickShowCommentModal" data-rootindex="{{rootIndex}}">回复</text>
+              <text data-agree-point="{{agreePoint.id}}" data-root="{{item.id}}" data-reply="{{item.id}}" data-depth="{{item.depth + 1}}" data-nickname="{{item.nickname}}" bindtap="onClickShowCommentModal" data-rootindex="{{rootIndex}}">回复</text>
               <text data-cid="{{item.id}}" data-rootindex="{{rootIndex}}" wx:if="{{item.favor}}" class="red" bindtap="doCommentFavor">赞</text>
               <text data-cid="{{item.id}}" data-rootindex="{{rootIndex}}" wx:else bindtap="doCommentFavor">赞</text>
             </view>
@@ -70,7 +70,7 @@
                   </view>
                 </view>
                 <view class="reply-func">
-                  <text data-agreePoint="{{agreePoint.id}}" data-root="{{item.id}}" data-reply="{{row.id}}" data-depth="{{row.depth + 1}}" data-nickname="{{row.nickname}}" bindtap="onClickShowCommentModal" data-rootindex="{{rootIndex}}">回复</text>
+                  <text data-agree-point="{{agreePoint.id}}" data-root="{{item.id}}" data-reply="{{row.id}}" data-depth="{{row.depth + 1}}" data-nickname="{{row.nickname}}" bindtap="onClickShowCommentModal" data-rootindex="{{rootIndex}}">回复</text>
                   <text data-cid="{{row.id}}" data-rootindex="{{rootIndex}}" data-childindex="{{childIndex}}" wx:if="{{row.favor}}" class="red" bindtap="doCommentFavor">赞</text>
                   <text data-cid="{{row.id}}" data-rootindex="{{rootIndex}}" data-childindex="{{childIndex}}" wx:else bindtap="doCommentFavor">赞</text>
                 </view>
@@ -107,7 +107,8 @@
   </view>
   <view class="text-input" wx:else>
     <image class="big-avatar" src="{{userInfo.avatarUrl}}"></image>
-    <input placeholder="说点什么..." bindtap="onClickShowCommentModal" data-agreePoint="{{agreePoint.id}}" data-depth="{{1}}"></input>
+    <!-- data-agree-point 会转成agreePoint -->
+    <input placeholder="说点什么..." bindtap="onClickShowCommentModal" data-agree-point="{{agreePoint.id}}" data-depth="{{1}}"></input>
     <image bindtap="doNewsFavor" data-nid="{{agreePoint.id}}" class="favor" wx:if="{{agreePoint.favor}}" src="/static/images/icon/likes_smallicon_click.png" ></image>
     <image bindtap="doNewsFavor" data-nid="{{agreePoint.id}}" class="favor" wx:else src="/static/images/icon/likes_smallicon_nor.png" ></image>
 
