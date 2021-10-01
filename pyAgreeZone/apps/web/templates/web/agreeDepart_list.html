@@ -1,0 +1,62 @@
+{% extends 'web/layout.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h2>部门列表</h2>
+        <div style="margin: 5px 0;">
+            <a href="{% url 'agreeDepart_add' %}" class="btn btn-primary">添加</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>部门名</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in queryset %}
+                <tr>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="Small button group">
+                            <a class="btn btn-default" href="{% url 'agreeDepart_edit' pk=item.id %}">编辑</a>
+                            <a class="btn btn-danger"
+                               onclick="removeRow(this,'{% url 'agreeDepart_delete' pk=item.id %}')">删除</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        function removeRow(ths, url) {
+            var result = confirm("确认删除？");
+            if (result) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: "JSON",
+                    success: function (arg) {
+                        if (arg.status) {
+                            $(ths).parent().parent().parent().remove();
+                        } else {
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+{% endblock %}
+
+
+
+
+
+

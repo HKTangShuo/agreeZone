@@ -1,0 +1,66 @@
+{% extends 'web/layout.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h2>话题列表</h2>
+        <div style="margin: 5px 0;">
+            <a href="{% url 'agreeTopic_add' %}" class="btn btn-primary">添加</a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>话题</th>
+                <th>关注度</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in queryset %}
+                <tr>
+                    <td>
+                        {{ item.title }}
+                    </td>
+                   <td>{{ item.count }}</td>
+                    <td>{{ item.get_status_display }}</td>
+                    <td>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="Small button group">
+                            <a class="btn btn-default" href="{% url 'agreeTopic_edit' pk=item.id %}">编辑</a>
+                            <a class="btn btn-danger"
+                               onclick="removeRow(this,'{% url 'agreeTopic_delete' pk=item.id %}')">删除</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        function removeRow(ths, url) {
+            var result = confirm("确认删除？");
+            if (result) {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: "JSON",
+                    success: function (arg) {
+                        if (arg.status) {
+                            $(ths).parent().parent().parent().remove();
+                        } else {
+                            alert('删除失败');
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+{% endblock %}
+
+
+
+
+
+
