@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
 from rest_framework import serializers
 from apps.api import models
 
@@ -10,7 +8,7 @@ class AgreeMessageModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.AgreeMessage
-        fields = ['id', 'title', 'status', 'cover', 'look_count','content']
+        fields = ['id', 'title', 'status', 'cover', 'look_count', 'content']
 
     def get_status(self, obj):
         status_class_mapping = {

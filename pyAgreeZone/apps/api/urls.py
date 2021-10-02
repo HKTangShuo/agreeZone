@@ -15,7 +15,6 @@ urlpatterns = [
     url(r'^agreeMessage/$', agreeMessage.AgreeMessageView.as_view()),
     url(r'^agreeMessage/(?P<pk>\d+)/$', agreeMessage.AgreeMessageDetailView.as_view()),
 
-
     # 赞点
     url(r'^agreePoint/$', agreePoint.AgreePointView.as_view()),
     url(r'^agreePoint/(?P<pk>\d+)/$', agreePoint.AgreePointDetailView.as_view()),

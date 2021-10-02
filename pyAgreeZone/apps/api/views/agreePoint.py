@@ -105,7 +105,7 @@ class RetrieveAgreePointDetailModelSerializer(serializers.ModelSerializer):
         queryset = models.AgreePointDetail.objects.filter(agreePoint=obj)
         return [
             model_to_dict(row, ['id', 'cos_path']) for row in queryset
-                ]
+        ]
 
     def get_topic(self, obj):
         if not obj.topic:

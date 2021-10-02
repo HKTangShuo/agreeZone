@@ -7,14 +7,13 @@
     "pages/home/home",
     "pages/agreePointDetail/agreePointDetail",
     "pages/agreeMessageDetail/agreeMessageDetail",
-
-
-    
-    "pages/deposit/deposit",
-    "pages/auctionItemDetail/auctionItemDetail",
     "pages/login/login",
     "pages/publish/publish",
     "pages/publishSuccess/publishSuccess",
+
+
+    "pages/deposit/deposit",
+    "pages/auctionItemDetail/auctionItemDetail",
     "pages/bid/bid",
     "pages/coupon/coupon",
     "pages/myCoupon/myCoupon",

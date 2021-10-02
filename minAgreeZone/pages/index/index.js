@@ -22,7 +22,7 @@ Page({
     }
     var userInfo = app.globalData.userInfo;
     wx.request({
-      url: api.Message,
+      url: api.AgreeMessage,
       data: condition,
       method: 'GET',
       dataType: 'json',
@@ -70,7 +70,7 @@ Page({
     }
     var userInfo = app.globalData.userInfo;
     wx.request({
-      url: api.Message,
+      url: api.AgreeMessage,
       data: {
         maxId: this.data.maxId
       },

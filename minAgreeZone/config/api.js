@@ -4,7 +4,7 @@ module.exports = {
   MsgCode: rootUrl + "/msg/",
   Login: rootUrl + "/login/",
   Credential: rootUrl + "/oss/credential/",
-  Message: rootUrl + '/agreeMessage/',
+  AgreeMessage: rootUrl + '/agreeMessage/',
   AgreePoint: rootUrl + "/agreePoint/",
   AgreePointDetail: rootUrl + "/agreePoint/", 
   AgreeTopic:rootUrl+"/agreeTopic",

@@ -8,14 +8,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    auctionDetail: {},
+    agreeMessageDetail: {},
     messageId: null
   },
 
   getDetailInfo:function(){
     var userInfo = app.globalData.userInfo;
     wx.request({
-      url: api.Auction + this.data.messageId + '/',
+      url: api.AgreeMessage + this.data.messageId + '/',
       header: {
         Authorization: userInfo ? "token " + userInfo.token : ""
       },
@@ -24,7 +24,7 @@ Page({
       responseType: 'text',
       success: (res) => {
         this.setData({
-          auctionDetail: res.data
+          agreeMessageDetail: res.data
         })
       }
     })
