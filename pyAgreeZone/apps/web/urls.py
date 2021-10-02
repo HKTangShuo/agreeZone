@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
 from django.conf.urls import url
 
 from apps.web.views import agreeMessage, agreeTopic, agreeDepart
@@ -8,6 +6,7 @@ urlpatterns = [
     # 通知管理
     url(r'^agreeMessage/list/$', agreeMessage.agreeMessage_list, name='agreeMessage_list'),
     url(r'^agreeMessage/add/$', agreeMessage.agreeMessage_add, name='agreeMessage_add'),
+    url(r'^agreeMessage/add/uploadImg/', agreeMessage.agreeMessage_uploadImg),
     url(r'^agreeMessage/delete/(?P<pk>\d+)/$', agreeMessage.agreeMessage_delete, name='agreeMessage_delete'),
     url(r'^agreeMessage/edit/(?P<pk>\d+)/$', agreeMessage.agreeMessage_edit, name='agreeMessage_edit'),
 
@@ -24,8 +23,6 @@ urlpatterns = [
     url(r'^agreeDepart/delete/(?P<pk>\d+)/$', agreeDepart.agreeDepart_delete, name='agreeDepart_delete'),
 
     # 赞书管理
-
-
 
     # 用户管理
 

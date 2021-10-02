@@ -88,7 +88,7 @@ class AgreePointView(CreateAPIView, ListAPIView):
 # ################################ 动态详细 ################################
 
 
-class RetrieveAgreePointDetailModelSerializerSerializer(serializers.ModelSerializer):
+class RetrieveAgreePointDetailModelSerializer(serializers.ModelSerializer):
     image_list = serializers.SerializerMethodField()
     topic = serializers.SerializerMethodField()
     user = serializers.SerializerMethodField()
@@ -207,7 +207,7 @@ class AgreePointDetailView(RetrieveAPIView):
     获取动态详细接口
     """
     queryset = models.AgreePoint.objects
-    serializer_class = RetrieveAgreePointDetailModelSerializerSerializer
+    serializer_class = RetrieveAgreePointDetailModelSerializer
 
     def get(self, request, *args, **kwargs):
         # 1. 获取详细信息

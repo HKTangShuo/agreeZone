@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "apps.api.apps.ApiConfig",
     "apps.web.apps.WebConfig",
     'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -134,12 +135,13 @@ REST_FRAMEWORK = {
     "UNAUTHENTICATED_USER": None,
     "UNAUTHENTICATED_TOKEN": None,
     "DEFAULT_AUTHENTICATION_CLASSES": ["utils.auth.GeneralAuthentication", ]
-
 }
 
+# 与用户上传相关的配置
+MEDIA_ROOT = os.path.join(BASE_DIR, "apps/web/media")
+MEDIA_URL = "/media/"
+
 try:
-    from .local_settings import  *
+    from .local_settings import *
 except ImportError:
     pass
-
-

@@ -10,7 +10,8 @@
             <thead>
             <tr>
                 <th>封面</th>
-                <th>内容</th>
+                <th>标题</th>
+{#                <th>内容</th>#}
                 <th>开始时间</th>
                 <th>结束时间</th>
                 <th>状态</th>
@@ -23,7 +24,8 @@
                     <td>
                         <img style="height: 60px;" src="{{ item.cover }}">
                     </td>
-                   <td>{{ item.content }}</td>
+                   <td>{{ item.title }}</td>
+{#                   <td>{{ item.content }}</td>#}
                     <td>{{ item.start_time|date:"Y-m-d H:i" }}</td>
                     <td>{{ item.end_time|date:"Y-m-d H:i" }}</td>
                     <td>{{ item.get_status_display }}</td>

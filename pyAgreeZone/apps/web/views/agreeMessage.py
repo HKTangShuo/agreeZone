@@ -2,20 +2,19 @@
 # -*- coding:utf-8 -*-
 import datetime
 import json
+import os
 import uuid
 import datetime
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from apps.api import models
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 
 from apps.web.forms.agreeMessage import AgreeMessageModelForm
-from utils.tencent.cos import upload_file
 
 from apps.web import tasks
-from pyAgreeZone import celery_app
-from celery.result import AsyncResult
+from pyAgreeZone import settings
 
 
 def agreeMessage_list(request):
@@ -32,7 +31,7 @@ def agreeMessage_add(request):
                 'end_time': ctime + datetime.timedelta(days=10),
             }
         )
-        return render(request, 'web/common_form.html', {'form': form, "formTitle": '添加通知'})
+        return render(request, 'web/agreeMessage_add.html', {'form': form, "formTitle": '添加通知'})
     form = AgreeMessageModelForm(data=request.POST, files=request.FILES)
 
     if form.is_valid():
@@ -53,7 +52,8 @@ def agreeMessage_add(request):
         )
 
         return redirect('agreeMessage_list')
-    return render(request, 'web/common_form.html', {'form': form})
+    return render(request, 'web/agreeMessage_add.html',
+                  {'form': form, "formTitle": '添加通知', 'content': request.POST.get('content')})
 
 
 def agreeMessage_delete(request, pk):
@@ -65,7 +65,7 @@ def agreeMessage_edit(request, pk):
     msg = models.AgreeMessage.objects.filter(id=pk).first()
     if request.method == 'GET':
         form = AgreeMessageModelForm(instance=msg)
-        return render(request, 'web/common_form.html', {'form': form, "formTitle": '编辑通知'})
+        return render(request, 'web/agreeMessage_add.html', {'form': form, "formTitle": '编辑通知'})
     form = AgreeMessageModelForm(data=request.POST, files=request.FILES, instance=msg)
     if form.is_valid():
         # 修改定时任务：如果时间不一致，则修改定时任务执行时间
@@ -73,4 +73,20 @@ def agreeMessage_edit(request, pk):
         value = form.changed_data
         form.save()
         return redirect('agreeMessage_list')
-    return render(request, 'web/common_form.html', {'form': form})
+    return render(request, 'web/agreeMessage_add.html', {'form': form})
+
+
+def agreeMessage_uploadImg(request):
+    # TODO 先实现，有空后面再优化
+    img = request.FILES.get('imgFile')
+
+    path = os.path.join(settings.MEDIA_ROOT, 'messageImg', img.name)
+    with open(path, 'wb') as f:
+        for line in img:
+            f.write(line)
+
+    response = {
+        'error': 0,
+        'url': '/media/messageImg/%s' % img.name
+    }
+    return HttpResponse(json.dumps(response))

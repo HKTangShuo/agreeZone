@@ -10,7 +10,7 @@ class AgreeMessageModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.AgreeMessage
-        fields = ['id', 'title', 'status', 'cover', 'look_count']
+        fields = ['id', 'title', 'status', 'cover', 'look_count','content']
 
     def get_status(self, obj):
         status_class_mapping = {

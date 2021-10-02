@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from utils.pagination import RollLimitOffsetPagination
 from utils.filters import ReachBottomFilter, PullDownRefreshFilter
 
@@ -14,3 +14,16 @@ class AgreeMessageView(ListAPIView):
     pagination_class = RollLimitOffsetPagination
 
 
+class AgreeMessageDetailView(RetrieveAPIView):
+    """通知+通知详情接口"""
+    queryset = models.AgreeMessage.objects
+    serializer_class = AgreeMessageModelSerializer
+
+
+class AgreePointDetailView(RetrieveAPIView):
+    """
+    TODO 待完成 围观数+1
+    获取动态详细接口
+    """
+    queryset = models.AgreePoint.objects
+    # serializer_class =
