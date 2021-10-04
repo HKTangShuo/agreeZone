@@ -6,7 +6,13 @@
     <title>赞圈er管理平台</title>
     <link rel="stylesheet" href="{% static 'web/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'web/css/common.css' %}">
-    {% block css %} {% endblock %}
+    <style>
+
+    </style>
+    {% block css %}
+
+
+    {% endblock %}
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -30,8 +36,18 @@
                 <li><a href="#">赞书管理</a></li>
                 <li><a href="#">用户管理</a></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+            <div class="right-menu right clearfix">
+
+                <div style="float: right">
+                    <a href="#" class="avatar" style="width: 20px;height: 20px">
+                        <img class="img-circle" src="{% static 'web/images/default.png' %}">
+                    </a>
+                    <div class="more-info">
+                        <a href="/logout/" class="more-item">注销</a>
+                    </div>
+                </div>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
 </nav>
 
 <div class="pg-body">

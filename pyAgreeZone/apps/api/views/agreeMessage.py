@@ -28,7 +28,7 @@ class AgreeMessageDetailView(RetrieveAPIView):
         # TODO 锁
         models.AgreeMessage.objects.filter(id=obj.id).update(look_count=F('look_count') + 1)
         serializer = self.get_serializer(obj)
-        
+
         return Response(serializer.data)
 
 

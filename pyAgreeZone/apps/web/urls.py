@@ -1,8 +1,12 @@
 from django.conf.urls import url
 
-from apps.web.views import agreeMessage, agreeTopic, agreeDepart
+from apps.web.views import agreeMessage, agreeTopic, agreeDepart, auth
 
 urlpatterns = [
+    url(r"login/", auth.login, name='login'),
+    url(r'^logout/$', auth.logout, name='logout'),
+    url(r'^index/$', auth.index, name='index'),
+
     # 通知管理
     url(r'^agreeMessage/list/$', agreeMessage.agreeMessage_list, name='agreeMessage_list'),
     url(r'^agreeMessage/add/$', agreeMessage.agreeMessage_add, name='agreeMessage_add'),

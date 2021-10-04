@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'apps.web.middleware.LoginMiddleware',
 ]
 
 ROOT_URLCONF = 'pyAgreeZone.urls'
@@ -140,6 +141,13 @@ REST_FRAMEWORK = {
 # 与用户上传相关的配置
 MEDIA_ROOT = os.path.join(BASE_DIR, "apps/web/media")
 MEDIA_URL = "/media/"
+
+
+VALID_URL_LIST = [
+    '/login/',
+    '/static/*'
+]
+SESSION_KEY = 'LOGIN_SESSION_KEY'
 
 try:
     from .local_settings import *

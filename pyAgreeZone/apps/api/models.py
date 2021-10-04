@@ -1,5 +1,3 @@
-from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
 
@@ -26,12 +24,28 @@ class UserInfo(models.Model):
     follow = models.ManyToManyField(verbose_name='关注', to='self', blank=True)
     session_key = models.CharField(verbose_name='微信会话秘钥', max_length=32)
     openid = models.CharField(verbose_name='微信用户唯一标识', max_length=32)
-
     depart = models.OneToOneField(verbose_name='部门', to='Department', null=True, blank=True, on_delete=models.CASCADE)
 
     status_choices = (
         (1, '正常'),
         (2, '不正常')
+    )
+    status = models.PositiveSmallIntegerField(verbose_name='用户状态', choices=status_choices, default=1)
+
+    def __str__(self):
+        return self.nickname
+
+
+class WebUserInfo(models.Model):
+    nickname = models.CharField(verbose_name='昵称', max_length=64)
+    name = models.CharField(verbose_name='账号', max_length=32, unique=True)
+    password = models.CharField(verbose_name='密码', max_length=64)
+
+    STATUS_VALID = 1
+    STATUS_INVALID = 2
+    status_choices = (
+        (STATUS_VALID, '正常'),
+        (STATUS_INVALID, '不正常')
     )
     status = models.PositiveSmallIntegerField(verbose_name='用户状态', choices=status_choices, default=1)
 
