@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from apps.web.views import agreeMessage, agreeTopic, agreeDepart, auth
+from apps.web.views import agreeMessage, agreeTopic, agreeDepart, auth, agreeBook, agreeUser
 
 urlpatterns = [
     url(r"login/", auth.login, name='login'),
@@ -27,7 +27,14 @@ urlpatterns = [
     url(r'^agreeDepart/delete/(?P<pk>\d+)/$', agreeDepart.agreeDepart_delete, name='agreeDepart_delete'),
 
     # 赞书管理
+    url(r'^agreeBook/list/$', agreeBook.agreeBook_list, name='agreeBook_list'),
+    url(r'^agreeBook/add/$', agreeBook.agreeBook_add, name='agreeBook_add'),
+    url(r'^agreeBook/add/uploadImg/', agreeBook.agreeBook_uploadImg),
+    url(r'^agreeBook/delete/(?P<pk>\d+)/$', agreeBook.agreeBook_delete, name='agreeBook_delete'),
+    url(r'^agreeBook/edit/(?P<pk>\d+)/$', agreeBook.agreeBook_edit, name='agreeBook_edit'),
 
     # 用户管理
-
+    url(r'^agreeUser/list/$', agreeUser.agreeUser_list, name='agreeUser_list'),
+    url(r'^agreeUser/dapart/deny/(?P<pk>\d+)/$', agreeUser.agreeUser_depart_deny, name='agreeUser_depart_deny'),
+    url(r'^agreeUser/depart/pass/(?P<pk>\d+)/$', agreeUser.agreeUser_depart_pass, name='agreeUser_depart_pass'),
 ]

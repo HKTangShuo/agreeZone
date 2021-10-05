@@ -14,6 +14,7 @@ class LoginMiddleware(MiddlewareMixin):
     def process_request(self, request):
         """
         当用户请求刚进入时候出发执行
+        当用户请求刚进入时候出发执行
         :param request:
         :return:
         """

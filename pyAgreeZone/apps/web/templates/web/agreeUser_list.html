@@ -1,0 +1,54 @@
+{% extends 'web/layout.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h2>用户列表</h2>
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>头像</th>
+                <th>昵称</th>
+                <th>手机号</th>
+                <th>部门</th>
+                <th>部门认证状态</th>
+                <th>部门认证</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in queryset %}
+                <tr>
+                    <td>
+                        <img style="height: 60px;" src="{{ item.avatar }}">
+                    </td>
+                    <td>{{ item.nickname }}</td>
+                    <td>{{ item.telephone }}</td>
+                    <td>{{ item.depart }}</td>
+                    <td>{{ item.get_depart_status_display }}</td>
+                    <td>
+                        <div class="btn-group btn-group-xs" role="group" aria-label="Small button group">
+                            {% if item.depart_status == 1 %}
+                                <a class="btn btn-danger" href="{% url 'agreeUser_depart_deny' pk=item.id %}">拒绝认证</a>
+
+                            {% elif item.depart_status == 3 %}
+                                <a class="btn btn-default" href="{% url 'agreeUser_depart_pass' pk=item.id %}">通过认证</a>
+                            {% else %}
+                                <a class="btn btn-default" href="{% url 'agreeUser_depart_pass' pk=item.id %}">通过认证</a>
+                                <a class="btn btn-danger" href="{% url 'agreeUser_depart_deny' pk=item.id %}">拒绝认证</a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+

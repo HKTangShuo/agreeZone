@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
 import uuid
 
 from django import forms
@@ -24,9 +22,10 @@ class AgreeMessageModelForm(BootStrapModelForm):
         fields = ['title', 'cover', 'start_time', 'end_time', 'content']
 
     def clean(self):
-        cleaned_data = self.cleaned_data
         # 上传文件
+        cleaned_data = self.cleaned_data
         cover_file_object = cleaned_data.get('cover')
+
         if not cover_file_object or isinstance(cover_file_object, FieldFile):
             return cleaned_data
 

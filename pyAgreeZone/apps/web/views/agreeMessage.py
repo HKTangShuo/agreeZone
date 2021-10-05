@@ -1,18 +1,11 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-import datetime
+
 import json
 import os
-import uuid
 import datetime
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from apps.api import models
-from django.views.decorators.csrf import csrf_exempt
-from django.urls import reverse
-
 from apps.web.forms.agreeMessage import AgreeMessageModelForm
-
 from apps.web import tasks
 from pyAgreeZone import settings
 
@@ -68,7 +61,7 @@ def agreeMessage_edit(request, pk):
         return render(request, 'web/agreeMessage_add.html', {'form': form, "formTitle": '编辑通知'})
     form = AgreeMessageModelForm(data=request.POST, files=request.FILES, instance=msg)
     if form.is_valid():
-        # 修改定时任务：如果时间不一致，则修改定时任务执行时间
+        # TODO 还没完成 修改定时任务：如果时间不一致，则修改定时任务执行时间
         # 1.时间如果时间有变更 form.changed_data
         value = form.changed_data
         form.save()

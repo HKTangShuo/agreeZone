@@ -21,26 +21,26 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">赞圈er平台</span>
+                <span class="sr-only">赞圈er管理平台</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">赞圈er平台</a>
+            <a class="navbar-brand" href="#">赞圈er管理平台</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'agreeMessage_list' %}">通知管理</a></li>
                 <li><a href="{% url 'agreeTopic_list' %}">话题管理</a></li>
                 <li><a href="{% url 'agreeDepart_list' %}">部门管理</a></li>
-                <li><a href="#">赞书管理</a></li>
-                <li><a href="#">用户管理</a></li>
+                <li><a href="{% url 'agreeBook_list' %}">赞书管理</a></li>
+                <li><a href="{% url 'agreeUser_list' %}">用户管理</a></li>
             </ul>
             <div class="right-menu right clearfix">
 
                 <div style="float: right">
-                    <a href="#" class="avatar" style="width: 20px;height: 20px">
-                        <img class="img-circle" src="{% static 'web/images/default.png' %}">
+                    <a href="#" class="avatar" >
+                        <img class="img-circle"  style="width: 35px;height: 35px" src="{% static 'web/images/default.png' %}">
                     </a>
                     <div class="more-info">
                         <a href="/logout/" class="more-item">注销</a>

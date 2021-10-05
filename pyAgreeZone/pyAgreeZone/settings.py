@@ -120,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/data/pyAgreeZone_static'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -142,10 +143,10 @@ REST_FRAMEWORK = {
 MEDIA_ROOT = os.path.join(BASE_DIR, "apps/web/media")
 MEDIA_URL = "/media/"
 
-
 VALID_URL_LIST = [
     '/login/',
-    '/static/*'
+    '/static/*',
+    '/api/*'
 ]
 SESSION_KEY = 'LOGIN_SESSION_KEY'
 

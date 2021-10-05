@@ -9,7 +9,7 @@ class Department(models.Model):
         (STATUS_VALID, '正常'),
         (STATUS_DELETE, '删除')
     )
-    status = models.PositiveSmallIntegerField(verbose_name='状态', choices=status_choices, default=1)
+    status = models.PositiveSmallIntegerField(verbose_name='状态', choices=status_choices, default=STATUS_VALID)
 
     def __str__(self):
         return self.name
@@ -25,18 +25,32 @@ class UserInfo(models.Model):
     session_key = models.CharField(verbose_name='微信会话秘钥', max_length=32)
     openid = models.CharField(verbose_name='微信用户唯一标识', max_length=32)
     depart = models.OneToOneField(verbose_name='部门', to='Department', null=True, blank=True, on_delete=models.CASCADE)
-
-    status_choices = (
-        (1, '正常'),
-        (2, '不正常')
+    DEPART_STATUS_VALID = 1
+    DEPART_STATUS_VERIFING = 2
+    DEPART_STATUS_INVALID = 3
+    depart_status_choices = (
+        (DEPART_STATUS_VALID, '已认证'),
+        (DEPART_STATUS_VERIFING, '认证中'),
+        (DEPART_STATUS_INVALID, '驳回')
     )
-    status = models.PositiveSmallIntegerField(verbose_name='用户状态', choices=status_choices, default=1)
+
+    depart_status = models.PositiveIntegerField(verbose_name='部门认证状态', choices=depart_status_choices,
+                                                default=DEPART_STATUS_VALID)  # 默认 已认证
+
+    STATUS_VALID = 1
+    STATUS_DELETE = 9
+    status_choices = (
+        (STATUS_VALID, '正常'),
+        (STATUS_DELETE, '删除')
+    )
+    status = models.PositiveSmallIntegerField(verbose_name='用户状态', choices=status_choices, default=STATUS_VALID)
 
     def __str__(self):
         return self.nickname
 
 
 class WebUserInfo(models.Model):
+    """web管理端用户"""
     nickname = models.CharField(verbose_name='昵称', max_length=64)
     name = models.CharField(verbose_name='账号', max_length=32, unique=True)
     password = models.CharField(verbose_name='密码', max_length=64)
@@ -47,7 +61,7 @@ class WebUserInfo(models.Model):
         (STATUS_VALID, '正常'),
         (STATUS_INVALID, '不正常')
     )
-    status = models.PositiveSmallIntegerField(verbose_name='用户状态', choices=status_choices, default=1)
+    status = models.PositiveSmallIntegerField(verbose_name='用户状态', choices=status_choices, default=STATUS_VALID)
 
     def __str__(self):
         return self.nickname
@@ -66,7 +80,7 @@ class Topic(models.Model):
         (STATUS_VALID, '正常'),
         (STATUS_INVALID, '失效')
     )
-    status = models.PositiveSmallIntegerField(verbose_name='话题状态', choices=status_choices, default=1)
+    status = models.PositiveSmallIntegerField(verbose_name='话题状态', choices=status_choices, default=STATUS_VALID)
 
 
 class AgreePoint(models.Model):
@@ -153,7 +167,7 @@ class AgreeMessage(models.Model):
     )
 
     title = models.CharField(verbose_name='标题', max_length=32)
-    status = models.PositiveSmallIntegerField(verbose_name='状态', choices=status_choices, default=1)
+    status = models.PositiveSmallIntegerField(verbose_name='状态', choices=status_choices, default=STATUS_NOT_START)
     content = models.CharField(verbose_name='内容', max_length=1024)
     cover = models.FileField(verbose_name='封面', max_length=128)
     # video = models.CharField(verbose_name='预览视频', max_length=128, null=True, blank=True)
@@ -178,7 +192,17 @@ class AgreeMessageTask(models.Model):
 
 class AgreeBook(models.Model):
     title = models.CharField(verbose_name='书名', max_length=32)
-    cover = models.CharField(verbose_name='封面', max_length=128)
+    desc = models.CharField(verbose_name='概要', max_length=256)
+    cover = models.FileField(verbose_name='封面', max_length=128)
     read_count = models.PositiveIntegerField(verbose_name='浏览数', default=0)
     author = models.CharField(verbose_name='作者名', max_length=32)
-    url = models.CharField(verbose_name='下载链接', max_length=128)
+    content = models.CharField(verbose_name='详细内容', max_length=1024)
+    url = models.FileField(verbose_name='书', max_length=128)
+
+    STATUS_VALID = 1
+    STATUS_DELETE = 9
+    status_choices = (
+        (STATUS_VALID, '正常'),
+        (STATUS_DELETE, '删除')
+    )
+    status = models.PositiveSmallIntegerField(verbose_name='状态', choices=status_choices, default=STATUS_VALID)
