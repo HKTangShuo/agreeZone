@@ -9,19 +9,7 @@
     "pages/agreeMessageDetail/agreeMessageDetail",
     "pages/login/login",
     "pages/publish/publish",
-    "pages/publishSuccess/publishSuccess",
-
-
-    "pages/deposit/deposit",
-    "pages/auctionItemDetail/auctionItemDetail",
-    "pages/bid/bid",
-    "pages/coupon/coupon",
-    "pages/myCoupon/myCoupon",
-    "pages/order/order",
-    "pages/pay/pay",
-    "pages/chooseCoupon/chooseCoupon",
-    "pages/chooseAddress/chooseAddress",
-    "pages/paySuccess/paySuccess"
+    "pages/publishSuccess/publishSuccess"
   ],
   "window": {
     "backgroundTextStyle": "dark",
