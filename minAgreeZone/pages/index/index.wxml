@@ -15,4 +15,5 @@
   </navigator>
 </view>
 </view>
-<tabbar selected="{{0}}"></tabbar>
+<view style="height:100rpx"></view>
+<tabbar selected="{{0}}" ></tabbar>

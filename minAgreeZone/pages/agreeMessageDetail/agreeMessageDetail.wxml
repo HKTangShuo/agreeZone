@@ -8,7 +8,6 @@
         <view class="title">{{agreeMessageDetail.title}}</view>
         <view>
           <text class="status {{agreeMessageDetail.status.class}}">{{agreeMessageDetail.status.text}}</text>
-          <!-- <text class="time">距离开始 34时 42分 33秒</text> -->
         </view>
       </view>
       <view class="share">

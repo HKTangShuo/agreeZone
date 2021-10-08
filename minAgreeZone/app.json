@@ -9,7 +9,8 @@
     "pages/agreeMessageDetail/agreeMessageDetail",
     "pages/login/login",
     "pages/publish/publish",
-    "pages/publishSuccess/publishSuccess"
+    "pages/publishSuccess/publishSuccess",
+    "pages/agreeBookDetail/agreeBookDetail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

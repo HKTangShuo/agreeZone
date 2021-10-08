@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from apps.api.views import auth
+from apps.api.views import auth, agreeBook
 from apps.api.views import agreeTopic
 from apps.api.views import agreePoint
 from apps.api.views import agreeMessage
@@ -23,4 +23,9 @@ urlpatterns = [
     url(r'^comment/$', agreePoint.CommentView.as_view()),
     url(r'^comment/favor/$', agreePoint.CommentFavorView.as_view()),
     url(r'^follow/$', agreePoint.FollowView.as_view()),
+
+    # 赞书
+    url(r'^agreeBook/$', agreeBook.AgreeBookView.as_view()),
+    url(r'^agreeBook/(?P<pk>\d+)/$', agreeBook.AgreeBookDetailView.as_view()),
+
 ]

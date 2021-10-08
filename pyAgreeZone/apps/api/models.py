@@ -198,6 +198,7 @@ class AgreeBook(models.Model):
     author = models.CharField(verbose_name='作者名', max_length=32)
     content = models.CharField(verbose_name='详细内容', max_length=1024)
     url = models.FileField(verbose_name='书', max_length=128)
+    order = models.PositiveIntegerField(verbose_name='排序', max_length=512)
 
     STATUS_VALID = 1
     STATUS_DELETE = 9

@@ -1,14 +1,17 @@
 <view class="msg-list-vew">
-  <view class="item">
-    <image class="avatar" src="/static/images/icon/comment_mention_icon_show.png"></image>
+  <view   wx:for="{{agreeBookList}}" wx:for-item="row" wx:key="index">
+    <navigator class="item" url="/pages/agreeBookDetail/agreeBookDetail?agreeBookId={{row.id}}">
+    <image class="avatar" src="{{row.cover}}"></image>
     <view class="msg">
       <view class="row">
-        <view class="title">Mysql实战45讲</view>
-        <view class="date">李连杰</view>
+        <view class="title">{{row.title}}</view>
+        <view class="date">{{row.author}}</view>
       </view>
-      <view class="summary">你阿斯顿发送到发送到发送到发斯蒂芬你阿斯顿发送到发送到发送到发斯蒂芬</view>
+      <view class="summary">{{row.desc}}</view>
     </view>
+    </navigator>
   </view>
+
 </view>
 
 
