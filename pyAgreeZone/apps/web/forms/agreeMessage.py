@@ -1,6 +1,8 @@
+import datetime
 import uuid
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.db.models.fields.files import FieldFile
 from django.forms import widgets
 
@@ -22,6 +24,11 @@ class AgreeMessageModelForm(BootStrapModelForm):
         fields = ['title', 'cover', 'start_time', 'end_time', 'content']
 
     def clean(self):
+        if datetime.datetime.utcfromtimestamp(
+                self.cleaned_data['start_time'].timestamp()) >= datetime.datetime.utcfromtimestamp(
+                self.cleaned_data['end_time'].timestamp()):
+            raise ValidationError('开始时间必须小于结束时间！')
+
         # 上传文件
         cleaned_data = self.cleaned_data
         cover_file_object = cleaned_data.get('cover')

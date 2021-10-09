@@ -39,7 +39,7 @@
     </view>
   </view>
 
-  <view class="comment">
+  <view class="comment" >
     <view>全部评论 - {{agreePoint.comment.count}} </view>
     <view class="tree">
       <view class="item" wx:for="{{agreePoint.comment.result}}" wx:key="id" wx:for-index="rootIndex">
@@ -87,7 +87,7 @@
     </view>
   </view>
 </view>
-
+<view style="height:50rpx"></view>
 <view class="buttom-view">
   <view class="comment-area" wx:if="{{isShowCommentModal}}">
     <view class="top">

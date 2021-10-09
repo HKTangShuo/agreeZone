@@ -2,7 +2,7 @@
 
 <view class="logo">
   <image src='/static/images/icon/logo_icon_show.png'></image>
-  <text>茶生活交流交易社区</text>
+  <text>赞圈er工作生活交流平台</text>
 </view>
 
 <view class="form">

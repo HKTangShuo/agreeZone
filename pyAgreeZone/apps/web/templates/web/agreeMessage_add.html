@@ -26,6 +26,12 @@
                                            class="col-sm-3 control-label">{{ field.label }}</label>
                                     <div class="col-sm-9">
                                         {{ field }}
+                                        {% if errors and field.name == 'start_time' %}
+                                            <span style="color: red">
+                                            {{ errors }}
+                                            </span>
+                                        {% endif %}
+
                                         <span style="color: red;">{{ field.errors.0 }}</span>
                                     </div>
                                 </div>
@@ -44,7 +50,6 @@
     <script src="{% static 'web/datetimepicker/bootstrap-datetimepicker.min.js' %}"></script>
     <script src="{% static 'web/datetimepicker/bootstrap-datetimepicker.zh-CN.js' %}"></script>
     <script src="{% static 'web/kindeditor/kindeditor-all.js' %}"></script>
-    <script src="{% static 'web/jquery-3.4.1.min.js' %}"></script>
     <script>
         Date.prototype.Format = function (fmt) { //author: meizz
             var o = {

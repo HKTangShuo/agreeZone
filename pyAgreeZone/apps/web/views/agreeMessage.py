@@ -1,7 +1,8 @@
-
 import json
 import os
 import datetime
+from pyAgreeZone import celery_app
+from celery.result import AsyncResult
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from apps.api import models
@@ -50,6 +51,13 @@ def agreeMessage_add(request):
 
 
 def agreeMessage_delete(request, pk):
+    # 取消定时任务
+    task_obj = models.AgreeMessageTask.objects.filter(agreeMessage_id=pk).first()
+    task_start_result = AsyncResult(id=task_obj.task, app=celery_app)
+    task_end_result = AsyncResult(id=task_obj.end_task, app=celery_app)
+    task_start_result.revoke()
+    task_end_result.revoke()
+    models.AgreeMessageTask.objects.filter(agreeMessage_id=pk).delete()
     models.AgreeMessage.objects.filter(id=pk).delete()
     return JsonResponse({'status': True})
 
@@ -61,12 +69,50 @@ def agreeMessage_edit(request, pk):
         return render(request, 'web/agreeMessage_add.html', {'form': form, "formTitle": '编辑通知'})
     form = AgreeMessageModelForm(data=request.POST, files=request.FILES, instance=msg)
     if form.is_valid():
-        # TODO 还没完成 修改定时任务：如果时间不一致，则修改定时任务执行时间
-        # 1.时间如果时间有变更 form.changed_data
+        # 如果时间不一致，则修改定时任务执行时间
         value = form.changed_data
-        form.save()
+        if ('start_time' in value):
+            message_start_datetime = datetime.datetime.utcfromtimestamp(form.cleaned_data['start_time'].timestamp())
+
+            # 更新状态
+            ctime = datetime.datetime.utcfromtimestamp(datetime.datetime.now().timestamp())
+            if ctime < message_start_datetime:
+                form.cleaned_data['status'] = models.AgreeMessage.STATUS_NOT_START
+                models.AgreeMessage.objects.filter(id=pk).update(status=models.AgreeMessage.STATUS_NOT_START)
+            else:
+                models.AgreeMessage.objects.filter(id=pk).update(status=models.AgreeMessage.STATUS_START)
+
+            # 定时任务处理
+            task_obj = models.AgreeMessageTask.objects.filter(agreeMessage_id=pk).first()
+            task_start_result = AsyncResult(id=task_obj.task, app=celery_app)
+            task_start_result.revoke()
+
+            start_task_id = tasks.to_start_agreeMessage_task.apply_async(args=[pk],
+                                                                         eta=message_start_datetime).id
+
+            models.AgreeMessageTask.objects.filter(agreeMessage_id=pk).update(task=start_task_id)
+
+        if ('end_time' in value):
+            task_obj = models.AgreeMessageTask.objects.filter(agreeMessage_id=pk).first()
+            task_end_result = AsyncResult(id=task_obj.end_task, app=celery_app)
+            task_end_result.revoke()
+
+            message_end_datetime = datetime.datetime.utcfromtimestamp(form.cleaned_data['end_time'].timestamp())
+            end_task_id = tasks.to_end_agreeMessage_task.apply_async(args=[pk],
+                                                                     eta=message_end_datetime).id
+            models.AgreeMessageTask.objects.filter(agreeMessage_id=pk).update(end_task=end_task_id)
+
+            # 更新状态
+            ctime = datetime.datetime.utcfromtimestamp(datetime.datetime.now().timestamp())
+            if ctime > message_end_datetime:
+                models.AgreeMessage.objects.filter(id=pk).update(status=models.AgreeMessage.STATUS_END)
+            else:
+                models.AgreeMessage.objects.filter(id=pk).update(status=models.AgreeMessage.STATUS_START)
+        # form.save()
+        models.AgreeMessage.objects.filter(id=pk).update(**form.cleaned_data)
         return redirect('agreeMessage_list')
-    return render(request, 'web/agreeMessage_add.html', {'form': form})
+    else:
+        return render(request, 'web/agreeMessage_add.html', {'form': form, 'errors': form.errors['__all__'][0]})
 
 
 def agreeMessage_uploadImg(request):
