@@ -23,10 +23,20 @@ class AgreeMessageModelForm(BootStrapModelForm):
         # 页面显示顺序
         fields = ['title', 'cover', 'start_time', 'end_time', 'content']
 
+    def is_valid_img(self, name):
+
+        return name.endswith('png') or name.endswith('jpg') or name.endswith('jpeg')
+
+    def clean_cover(self):
+        cover = self.cleaned_data.get('cover')
+        if not self.is_valid_img(cover.name):
+            raise forms.ValidationError('图片名不合法')
+        return cover
+
     def clean(self):
         if datetime.datetime.utcfromtimestamp(
                 self.cleaned_data['start_time'].timestamp()) >= datetime.datetime.utcfromtimestamp(
-                self.cleaned_data['end_time'].timestamp()):
+            self.cleaned_data['end_time'].timestamp()):
             raise ValidationError('开始时间必须小于结束时间！')
 
         # 上传文件
