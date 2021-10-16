@@ -1,19 +1,15 @@
 <view class="msg-list-vew">
   <view   wx:for="{{agreeBookList}}" wx:for-item="row" wx:key="index">
     <navigator class="item" url="/pages/agreeBookDetail/agreeBookDetail?agreeBookId={{row.id}}">
-    <image class="avatar" src="{{row.cover}}"></image>
-    <view class="msg">
-      <view class="row">
-        <view class="title">{{row.title}}</view>
-        <view class="date">{{row.author}}</view>
+      <image class="book" src="{{row.cover}}"></image>
+      <view class="detail">
+        <view class="row">
+          <view class="title">{{row.title}}</view>
+          <view class="author">{{row.author}}</view>
+        </view>
+        <view class="summary">{{row.desc}}</view>
       </view>
-      <view class="summary">{{row.desc}}</view>
-    </view>
     </navigator>
   </view>
-
 </view>
-
-
-
 <tabbar selected="{{3}}"></tabbar>

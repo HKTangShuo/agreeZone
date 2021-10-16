@@ -6,6 +6,7 @@ from tencentcloud.sms.v20190711 import sms_client, models
 from tencentcloud.common.profile.client_profile import ClientProfile
 from tencentcloud.common.profile.http_profile import HttpProfile
 
+from pyAgreeZone import settings
 from utils.response import BaseResponse
 
 
@@ -22,21 +23,22 @@ def send_china_msg(phone, code):
     response = BaseResponse()
     try:
         phone = "{}{}".format("+86", phone)
-        cred = credential.Credential("AKIDW3Rgszw84ylQxMzNn7KOJ6kFPSL5c5MU", "GQSMXmtsjR0QhuIalzTp250nU6digZSD")
-        client = sms_client.SmsClient(cred, "ap-guangzhou")
+        cred = credential.Credential(settings.SMS_SECRET_ID, settings.SMS_SECRET_KEY)
+        client = sms_client.SmsClient(cred, settings.SMS_REGION)
 
         req = models.SendSmsRequest()
-        req.SmsSdkAppid = "1400302209"
+        req.SmsSdkAppid = settings.SMS_SDK_APPID
         # 短信签名内容: 使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台] 查看
-        req.Sign = "Python之路"
+        req.Sign = settings.SMS_SIGN_NAME
         # 示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号
         req.PhoneNumberSet = [phone, ]
         # 模板 ID: 必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台] 查看
-        req.TemplateID = "516680"
+        req.TemplateID = settings.SMS_TEMPLATE_ID
         # 模板参数: 若无模板参数，则设置为空
         req.TemplateParamSet = [code, ]
 
         resp = client.SendSms(req)
+        print(resp)
 
         response.message = resp.SendStatusSet[0].Message
         if resp.SendStatusSet[0].Code == "Ok":
@@ -49,5 +51,5 @@ def send_china_msg(phone, code):
 
 
 if __name__ == '__main__':
-    result = send_china_msg("999", "15131255089")
+    result = send_china_msg("999", "15595769530")
     print(result.status, result.message)

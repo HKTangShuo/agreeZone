@@ -1,20 +1,25 @@
 <view class="container">
-
-
-
-  <view class="tips">
+  <view class="top-container">
     <view class="top">
-      <image src="{{agreeBookDetail.cover}}"></image>
+      <image class="book-cover" src="{{agreeBookDetail.cover}}"></image>
       <view>
-        <view class="title">{{agreeBookDetail.title}}</view>
-        <view class="author">{{agreeBookDetail.author}}</view>
+        <view class="book-detail">
+          <view class="title">{{agreeBookDetail.title}}</view>
+          <view class="book-desc">
+            {{agreeBookDetail.desc}}
+          </view>
+          <view class="author">
+            <image style="width:25rpx;height:25rpx" src="/static/images/icon/ic_author.png"></image>
+            {{agreeBookDetail.author}}
+          </view>
+        </view>
+        <!-- <button>下载</button> -->
       </view>
-      <view>
-        {{agreeBookDetail.desc}}
-      </view>
-      <button>下载</button>
+
+
+      
     </view>
-    <view class="others">
+    <view class="count">
       <view>{{agreeBookDetail.read_count}}已浏览</view>
     </view>
   </view>
@@ -22,8 +27,9 @@
   <view class="content">
     <rich-text nodes="{{agreeBookDetail.content}}">
     </rich-text>
-    <view class="footer">
-      <label>- 已经到底了 - </label>
-    </view>
+
   </view>
+</view>
+<view class="footer">
+  <label>- 已经到底了 - </label>
 </view>

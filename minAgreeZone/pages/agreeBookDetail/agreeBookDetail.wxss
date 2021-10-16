@@ -1,83 +1,99 @@
-/* pages/auctionDetail/auctionDetail.wxss */
 
-
-
-.banner image{
-  width: 750rpx;
-  height: 400rpx;
+.container{
+  padding:40rpx;
 }
 
-.tips{
-  padding:20rpx 40rpx;
+.top-container{
   border-bottom: 18rpx solid #f5f5f5;
 }
 
-.tips .top{
+.top-container .top{
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
-.tips .top .title{
-  font-size: 42rpx;
+.top-container .top .book-cover{
+  width: 200rpx;
+  height: 280rpx;
+}
+.top-container .top .book-detail{
+  width: 445rpx;
+}
+
+.top-container .top .title{
+  font-size: 40rpx;
   font-weight: 500;
-  margin-bottom: 10rpx;
 }
 
-.tips .top .status{
+.top-container .top .author{
+  margin-left: 20rpx;
+  margin-top: 15rpx;
+  color: #8c8c8c;
+  font-size: 28rpx;
+}
+
+.top-container .top .book-desc{
+  margin-left: 20rpx;
+  margin-top: 15rpx;
+  height: 170rpx;
+  color: #8c8c8c;
+  font-size: 30rpx;
+}
+
+.top-container .top .status{
   padding: 0 12rpx;
   border-radius: 12rpx;
   color: #fff;
   font-size: 28rpx;
 }
-.tips .top  .status.auction{
+.top-container .top  .status.auction{
   background-color: #d71e61;
 }
 
-.tips .top  .status.preview{
+.top-container .top  .status.preview{
   background-color: #00c8b6;
 }
 
-.tips .top  .status.stop{
+.top-container .top  .status.pyAgreeZone{
   background-color: #ccc;
 }
 
-.tips .top .time{
+.top-container .top .time{
   margin-left: 10rpx;
   font-size: 28rpx;
 }
 
 
-.tips .top .share{
+.top-container .top .share{
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 24rpx;
 }
 
-.tips .top .share image{
+.top-container .top .share image{
   height: 40rpx;
   width: 40rpx;
   margin-bottom: 5rpx;
 }
 
-.tips .others{
+.top-container .count{
   display: flex;
   flex-direction: row;
   justify-content:space-between;
-
-  margin-top: 10rpx;
+  margin-top: 15rpx;
   color: #8c8c8c;
   font-size: 28rpx;
 }
 
 
+
+
+
 .content{
 margin: 20rpx;
 }
-
-
-
 
 .footer{
   background-color: #f5f5f5;

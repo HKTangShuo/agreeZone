@@ -168,7 +168,7 @@ class AgreeMessage(models.Model):
 
     title = models.CharField(verbose_name='标题', max_length=32)
     status = models.PositiveSmallIntegerField(verbose_name='状态', choices=status_choices, default=STATUS_NOT_START)
-    content = models.CharField(verbose_name='内容', max_length=1024)
+    content = models.CharField(verbose_name='内容', max_length=10240)
     cover = models.FileField(verbose_name='封面', max_length=128)
     # video = models.CharField(verbose_name='预览视频', max_length=128, null=True, blank=True)
     start_time = models.DateTimeField(verbose_name='通知开始时间')

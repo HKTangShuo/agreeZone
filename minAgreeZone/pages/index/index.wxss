@@ -37,15 +37,13 @@
   align-items: center;
 }
 
-.memo .status.auction{
-  background-color: #d71e61;
-}
+
 
 .memo .status.preview{
   background-color: #00c8b6;
 }
 
-.memo .status.stop{
+.memo .status.pyAgreeZone{
   background-color: #ccc;
 }
 

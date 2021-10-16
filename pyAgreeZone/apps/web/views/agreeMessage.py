@@ -112,7 +112,10 @@ def agreeMessage_edit(request, pk):
         models.AgreeMessage.objects.filter(id=pk).update(**form.cleaned_data)
         return redirect('agreeMessage_list')
     else:
-        return render(request, 'web/agreeMessage_add.html', {'form': form, 'errors': form.errors['__all__'][0]})
+        if form.errors.get("__all__"):
+
+            return render(request, 'web/agreeMessage_add.html', {'form': form, 'errors': form.errors['__all__'][0]})
+        return render(request, 'web/agreeMessage_add.html', {'form': form})
 
 
 def agreeMessage_uploadImg(request):

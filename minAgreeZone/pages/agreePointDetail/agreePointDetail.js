@@ -23,7 +23,6 @@ Page({
       return
     }
     var replyInfo = e.currentTarget.dataset;
-    console.log(replyInfo)
     this.setData({
       isShowCommentModal: true,
       reply: replyInfo,

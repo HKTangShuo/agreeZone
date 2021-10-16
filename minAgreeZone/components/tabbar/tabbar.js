@@ -53,6 +53,12 @@ Component({
     switchTab(e) {
       const data = e.currentTarget.dataset;
       const url = data.path;
+      console.log(url)
+      if(url=='/pages/home/home' && ! auth.authentication()){
+       
+        return
+      }
+
       if (data.path) {
         wx.switchTab({
           url

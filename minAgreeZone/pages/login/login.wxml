@@ -1,7 +1,7 @@
 <!--pages/login/login.wxml-->
 
 <view class="logo">
-  <image src='/static/images/icon/logo_icon_show.png'></image>
+  <image src='/static/images/icon/ic_logo.png'></image>
   <text>赞圈er工作生活交流平台</text>
 </view>
 
