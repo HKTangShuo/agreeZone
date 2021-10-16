@@ -44,41 +44,41 @@
 
   
 
-  ![image-20211016155217147](imgs\image-20211016155217147.png)
+  ![image-20211016155217147](imgs/image-20211016155217147.png)
 
 - 赞点页面
 
   
 
-  ![image-20211016154931454](imgs\image-20211016154931454.png)
+  ![image-20211016154931454](imgs/image-20211016154931454.png)
 
   
 
-  ![image-20211016155017118](imgs\image-20211016155017118.png)
+  ![image-20211016155017118](imgs/image-20211016155017118.png)
 
   
 
 - 发布赞点页面
 
-  ![image-20211016154418529](imgs\image-20211016154418529.png)
+  ![image-20211016154418529](imgs/image-20211016154418529.png)
 
-  ![image-20211016154904662](imgs\image-20211016154904662.png)
+  ![image-20211016154904662](imgs/image-20211016154904662.png)
 
   
 
 - 赞书页面
 
-  ![image-20211016155254084](imgs\image-20211016155254084.png)
+  ![image-20211016155254084](imgs/image-20211016155254084.png)
 
 - 我的页面
 
-  ![image-20211016155303470](imgs\image-20211016155303470.png)
+  ![image-20211016155303470](imgs/image-20211016155303470.png)
 
 - web管理平台
 
-  ![image-20211016155317217](imgs\image-20211016155317217.png)
+  ![image-20211016155317217](imgs/image-20211016155317217.png)
 
-  ![image-20211016231844029](imgs\image-20211016231844029.png)
+  ![image-20211016231844029](imgs/image-20211016231844029.png)
 
 ## 技术说明以及项目部署
 
@@ -95,7 +95,7 @@
 
 其主要流程图如下：
 
-![image-20211016175305562](C:\Users\flm\AppData\Roaming\Typora\typora-user-images\image-20211016175305562.png)
+![image-20211016175305562](imgs/image-20211016175305562.png)
 
 
 
@@ -105,7 +105,7 @@
 
 1. 目录结构说明
 
-   ![image-20211016224412429](C:\Users\flm\AppData\Roaming\Typora\typora-user-images\image-20211016224412429.png)
+   ![image-20211016224412429](imgs/image-20211016224412429.png)
 
    - minAgreeZone 为微信小程序代码
    - pyAgreeZone 为微信小程序后端和管理端后端代码 
@@ -116,7 +116,7 @@
 
    目前项目后端（pyAgreeZone) 已部署到 106.75.109.111 服务器，微信小程序须在config/api.js中配置即可以直接连接该地址 `const rootUrl = 'http://106.75.109.111/api'`
 
-   ![image-20211016224955572](C:\Users\flm\AppData\Roaming\Typora\typora-user-images\image-20211016224955572.png)
+   ![image-20211016224955572](imgs/image-20211016224955572.png)
 
    也可在本地开启服务(请先确保本地已安装python3.6、redis数据库) ，后台启动方式如下
 
