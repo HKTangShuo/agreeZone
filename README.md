@@ -40,31 +40,14 @@
 
 - 通知页面
 
-  ![image-20211016154226734](https://github.com/HKTangShuo/agreeZone/blob/main/imgs/image-20211016154226734.png)
-
-  
-
-  ![image-20211016155217147](imgs/image-20211016155217147.png)
+  ![image-20211016154226734](https://github.com/HKTangShuo/agreeZone/blob/main/imgs/image-20211016154226734.png)![image-20211016155217147](imgs/image-20211016155217147.png)
 
 - 赞点页面
-
-  
-
-  ![image-20211016154931454](imgs/image-20211016154931454.png)
-
-  
-
-  ![image-20211016155017118](imgs/image-20211016155017118.png)
-
-  
+  ![image-20211016154931454](imgs/image-20211016154931454.png)![image-20211016155017118](imgs/image-20211016155017118.png)
 
 - 发布赞点页面
 
-  ![image-20211016154418529](imgs/image-20211016154418529.png)
-
-  ![image-20211016154904662](imgs/image-20211016154904662.png)
-
-  
+  ![image-20211016154418529](imgs/image-20211016154418529.png)![image-20211016154904662](imgs/image-20211016154904662.png)
 
 - 赞书页面
 
@@ -76,9 +59,9 @@
 
 - web管理平台
 
-  ![image-20211016155317217](imgs/image-20211016155317217.png)
+  ![image-20211016155317217](imgs/image-20211016155317217.png)![image-20211016231844029](imgs/image-20211016231844029.png)
 
-  ![image-20211016231844029](imgs/image-20211016231844029.png)
+  
 
 ## 技术说明以及项目部署
 
