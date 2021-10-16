@@ -40,7 +40,7 @@
 
 - 通知页面
 
-  ![image-20211016154226734](imgs\image-20211016154226734.png)
+  ![image-20211016154226734](https://github.com/HKTangShuo/agreeZone/blob/main/imgs/image-20211016154226734.png)
 
   
 
