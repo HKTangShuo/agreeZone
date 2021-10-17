@@ -122,18 +122,20 @@
 
    `cd pyAgreeZone`
 
-   `pip3 install -r requiements.txt`
+   `pip3 install -r requiements.txt` 安装项目依赖
 
-   `python manage.py makemigrations`
+   `python manage.py makemigrations` 生成数据库脚本
 
-   `python manage.py migrate`
+   `python manage.py migrate` 执行数据库脚本
 
-   `python manage.py runserver`
+   `celery worker -A pyAgreeZone -l info -P eventlet` (开启celery定时任务 ，linux不加 -P eventlet)
+
+   `python manage.py runserver` （开启服务）
 
    访问 http://127.0.0.1:8000/login/
 
    用户名 admin
-
+   
    密码 123456
 
 ## 待完成V2.0
